@@ -2,11 +2,13 @@ package com.music.mp3list;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -29,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 //            Toast.makeText(this, "No song", Toast.LENGTH_SHORT).show();
 //        }
 
+        MediaPlayer mp = new MediaPlayer();
+        try {
+            mp.setDataSource("/storage/sdcard0/Download/Nightcore - Apollo - (Lyrics).mp3");
+            mp.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mp.start();
     }
 
         ArrayList<HashMap<String,String>> getPlayList(String rootPath) {
